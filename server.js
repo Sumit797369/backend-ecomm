@@ -12,6 +12,6 @@ app.use(cors())
 
 //api endpoints
 app.get('/',(req,res)=>{
-   res.send('API Working') 
+   res.send('API Working' + "hello") 
 });
 app.listen(port,()=>console.log('server started : '+ port))
