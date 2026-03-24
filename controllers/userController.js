@@ -16,7 +16,7 @@ try{
         return res.json({success:false,message:"User not found"});
     }
     const isMatch = await bcrypt.compare(password, user.password);
-    if(!isMatch){
+    if(isMatch){
         const token = createToken(user._id);
      res.json({success:true,token});
     }else{
