@@ -1,7 +1,10 @@
-import {v2 as cloudinary} from "cloudinary";
+// import {v2 as cloudinary} from "cloudinary";
+import cloudinary from "../config/cloudinary.js";
 
 const addProduct = async (req, res) => {
+  
   try {
+    
     const {
       name,
       description,
@@ -18,14 +21,17 @@ const addProduct = async (req, res) => {
     const image4 = req.files.image4 && req.files.image4[0];
 
     const images= [image1,image2,image3,image4].filter((item)=> item !== undefined);
+    
     let imageUrl = await Promise.all(
       images.map(async (item)=>{
         let result = await cloudinary.uploader.upload(item.path,{resource_type:'image'});
         return result.secure_url
 
+        
       })
     )
-
+    
+    
 
     console.log( name,
       description,
@@ -35,7 +41,7 @@ const addProduct = async (req, res) => {
       sizes,
       bestseller);
     
-console.log(image1,image2,image3,image4);
+console.log(imageUrl);
 
 
   } catch (error) {

@@ -5,13 +5,16 @@ import connectDB from './config/mongodb.js';
 import connectUploadCare from './config/cloudinary.js';
 import userRouter from './routes/userRoute.js';
 import productRouter from './routes/productRoute.js';
-import connectCloudinary from './config/cloudinary.js';
+
+// import { v2 as cloudinary } from "cloudinary";
 
 //App config
 const app = express()
 const port = process.env.PORT || 4000
 connectDB();
-connectCloudinary()
+
+
+
 
 
 
